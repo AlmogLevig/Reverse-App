@@ -6,13 +6,13 @@ Deploy Python application With K8s,Ansible and Terraform
 Instructions to deploy K8s on AWS EC2 using Terraform and Ansible:
 
 1) Terraforn initialize:
-   `> terraform init
+   `> terraform init`
 
 2) Running Terraform:
-   `> terraform apply --auto-approve -var region=$REGION -var key_name=$KEY_N`
+   `> terraform apply -auto-approve -var region=$REGION -var key_name=$KEY_N`
 
 3) when finish use instances, Destroying ec2 intances with command below:
-   `> terraform destory --auto-approve -var region=$REGION -var key_name=$KEY_N`
+   `> terraform destory -auto-approve -var region=$REGION -var key_name=$KEY_N`
 
 Requirment:
   1) Ansible
