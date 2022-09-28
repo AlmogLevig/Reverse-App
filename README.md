@@ -11,7 +11,7 @@ Instructions to deploy K8s on AWS EC2 using Terraform and Ansible:
 2) Running Terraform:
    `> terraform apply --auto-approve -var region=$REGION -var key_name=$KEY_N`
 
-3) when finish use instances, Destory ec2 intances with command below:
+3) when finish use instances, Destroying ec2 intances with command below:
    `> terraform destory --auto-approve -var region=$REGION -var key_name=$KEY_N`
 
 Requirment:
@@ -24,9 +24,11 @@ Configure environment:
  `❯ export AWS_ACCESS_KEY_ID='********************************'
   > export AWS_SECRET_ACCESS_KEY='**************************************'
   > export KEY_N="appKey"
-  > export REGION="eu-central-1"` 
+  > export REGION="eu-central-1"
+  ` 
 
 ## Components
+
 ### K8s
   * Load Balancer Service
   * Ingress nginx - use for routing to `/reverse`
@@ -34,7 +36,7 @@ Configure environment:
 
 ### Ansible
   * main.yml
-  * inventory.yml -> Dynamic Inventory
+  * inventory.yml -> Dynamic Inventory, Create after using command `terraform apply`
   
 ### Terraform
   * main.tf
@@ -47,11 +49,11 @@ Configure environment:
   * terraform.tfvars (template file)
     * AWS Credentials (secret_key, access_key)
 
-## Python
+### Python
   * main.py
     * flask
     * utils  
   * utils.py
-    * converting Query to Json fnuction
+    * converting Query to Json function
   * Dockerfile
   * wsgi.py (aplling via Gunicorn)
