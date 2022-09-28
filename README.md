@@ -21,11 +21,10 @@ Requirment:
   4) Private-Key (Should be located in Terraform folder)
 
 Configure environment:
- `> export AWS_ACCESS_KEY_ID='********************************'
-  > export AWS_SECRET_ACCESS_KEY='**************************************'
-  > export KEY_N="appKey"
-  > export REGION="eu-central-1"
-  ` 
+  `> export AWS_ACCESS_KEY_ID='********************************'`
+  `> export AWS_SECRET_ACCESS_KEY='**************************************'`
+  `> export KEY_N="appKey"`
+  `> export REGION="eu-central-1"`
 
 ## Components
 
