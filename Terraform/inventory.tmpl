@@ -1,0 +1,15 @@
+[masters]
+master ansible_host=${instance_one} ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
+
+[workers]
+worker ansible_host=${instance_two} 
+
+
+[masters:vars]
+ansible_user=ubuntu
+master_ip=${instance_one}
+
+[workers:vars]
+ansible_user=ubuntu 
+worker_ip=${instance_two}
+
