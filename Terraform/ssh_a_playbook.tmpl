@@ -1,0 +1,6 @@
+#!/bin/bash
+
+ssh-agent bash
+ssh-add ./${key_name}.pem
+sleep 15
+ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i ../Ansible/inventory ../Ansible/main.yml
