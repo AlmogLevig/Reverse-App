@@ -4,13 +4,6 @@ resource "aws_security_group" "ins_sg" {
 
   ingress {
     description      = "ssh connection"
-    from_port        = 30000
-    to_port          = 32767
-    protocol         = "TCP"
-    cidr_blocks      = ["0.0.0.0/0"]
-  }
-  ingress {
-    description      = "ssh connection"
     from_port        = 2379
     to_port          = 2380
     protocol         = "TCP"
@@ -65,6 +58,29 @@ resource "aws_security_group" "ins_sg" {
     cidr_blocks      = ["0.0.0.0/0"]
   }
 
+  ingress {
+    description      = "http connection"
+    from_port        = 32000
+    to_port          = 32000
+    protocol         = "TCP"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description      = "http connection"
+    from_port        = 5000
+    to_port          = 5000
+    protocol         = "TCP"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  egress {
+    description      = "http connection"
+    from_port        = 5000
+    to_port          = 5000
+    protocol         = "TCP"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
   ingress {
     description      = "http connection"
     from_port        = 6443
