@@ -56,3 +56,8 @@ Configure environment:
     * converting Query to Json function
   * Dockerfile
   * wsgi.py (aplling via Gunicorn)
+  
+  
+## url
+   ip-node:3200/revese?q=some string
+
