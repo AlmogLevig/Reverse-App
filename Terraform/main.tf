@@ -11,7 +11,7 @@ resource "aws_instance" "instance" {
     instance_type          = var.instance_type
     key_name               = var.key_name
     vpc_security_group_ids = [aws_security_group.ins_sg.id]
-    
+
     tags = {
         Name = element(var.instance_tags, count.index)
     }
@@ -27,11 +27,24 @@ resource "local_file" "AnsibleInventory" {
     filename = "../Ansible/inventory"
 }
 
-resource "null_resource" "run_ansible" {
-	provisioner "local-exec" {
-        command ="ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i ../Ansible/inventory ../Ansible/main.yml"                       
-        }
-        depends_on = [ 
-            aws_instance.instance
+resource "local_file" "ansible_script" {
+ content = templatefile("ssh_a_playbook.tmpl",
+    {
+        key_name= var.key_name
+    })
+    filename = "./ssh_a_playbook.sh"
+    depends_on = [ 
+            local_file.AnsibleInventory
         ]
 }
+
+resource "null_resource" "run_ansible" {
+	   
+    provisioner "local-exec" {
+        command ="chmod +x ssh_a_playbook.sh && sh ./ssh_a_playbook.sh"
+        }
+        depends_on = [ 
+            local_file.ansible_script
+        ]
+}
+
