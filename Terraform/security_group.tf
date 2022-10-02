@@ -57,6 +57,21 @@ resource "aws_security_group" "ins_sg" {
     cidr_blocks      = ["0.0.0.0/0"]
   }
 
+  ingress {
+    description      = "http connection"
+    from_port        = 443
+    to_port          = 443
+    protocol         = "TCP"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description      = "http connection"
+    from_port        = 6443
+    to_port          = 6443
+    protocol         = "TCP"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
   egress {
     from_port        = 0
     to_port          = 0
@@ -67,5 +82,4 @@ resource "aws_security_group" "ins_sg" {
   tags = {
     Name = var.sg_name
   }
-
 }
