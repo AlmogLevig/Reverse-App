@@ -14,7 +14,7 @@ Instructions to deploy K8s on AWS EC2 using Terraform and Ansible:
 3) when finish use instances, Destroying ec2 intances with command below:
    `> terraform destory -auto-approve -var region=$REGION -var key_name=$KEY_N`
 
-Requirment:
+Requirments:
   1) Ansible
   2) Terraform
   3) Amazon Account
